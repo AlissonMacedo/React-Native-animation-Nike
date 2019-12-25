@@ -9,50 +9,71 @@ import {
 } from "react-native";
 import { Transition } from "react-navigation-fluid-transitions";
 
-export default function Screen5({ navigation }) {
-  function myCustomTransitionFunction({ transitionInfo }) {
-    const { progress, start, end } = transitionInfo;
-    const scaleInterpolation = progress.interpolate({
-      inputRange: [0, start, end, 1],
-      outputRange: [88, 88, 1, 1]
-    });
-    return { transform: [{ scale: scaleInterpolation }] };
-  }
+class Screen5 extends React.Component {
+  render() {
+    return (
+      <TouchableOpacity
+        activeOpacity={1}
+        style={styles.container}
+        onPress={() => this.props.navigation.navigate("Screen3")}
+      >
+        <Transition shared="card2">
+          <View style={styles.card2} />
+        </Transition>
 
-  return (
-    <TouchableOpacity
-      tyle={styles.container}
-      onPress={() => navigation.navigate("screen6")}
-    >
-      <Text>Screen5</Text>
-      <Transition appear={myCustomTransitionFunction} shared="paper">
-        <View style={styles.paper} />
-      </Transition>
-    </TouchableOpacity>
-  );
+        <Transition shared="shoe2">
+          <Image
+            style={styles.shoe2}
+            source={require("./assets/air-jordan-1.png")}
+          />
+        </Transition>
+        <Transition appear="horizontal">
+          <View style={styles.headerContainer}>
+            <Text style={styles.header}>THE TEN</Text>
+            <Text style={styles.subheader}>AIR JORDAN I</Text>
+          </View>
+        </Transition>
+      </TouchableOpacity>
+    );
+  }
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#CCC",
-    justifyContent: "center",
-    alignItems: "center"
+    backgroundColor: "#FFF"
   },
-  paper: {
-    width: 175,
-    height: 295,
-    flexDirection: "column",
-    backgroundColor: "#7159c1",
-    bottom: 0,
-    right: 10,
-    left: 20,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    padding: 10,
-    borderRadius: 21,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.6,
-    shadowRadius: 3
+  headerContainer: {
+    padding: 20,
+    paddingTop: Dimensions.get("window").height * 0.5
+  },
+  header: {
+    color: "#999",
+    fontSize: 80,
+    marginBottom: -14
+  },
+  subheader: {
+    color: "#999",
+    fontSize: 34,
+    paddingTop: 10
+  },
+  card2: {
+    backgroundColor: "#2EB8D1",
+    left: Dimensions.get("window").width * 0.25,
+    top: Dimensions.get("window").height * 0.0 - 150,
+    width: Dimensions.get("window").height * 0.6,
+    height: Dimensions.get("window").height * 0.6,
+    transform: [{ rotate: "-20deg" }],
+    borderRadius: Dimensions.get("window").height * 0.6
+  },
+
+  shoe2: {
+    width: Dimensions.get("window").width * 0.9,
+    height: Dimensions.get("window").width * 0.5,
+    left: Dimensions.get("window").width * 0.05 - 30,
+    top: Dimensions.get("window").height * 0.1 - 400,
+    transform: [{ rotate: "-30deg" }]
   }
 });
+
+export default Screen5;

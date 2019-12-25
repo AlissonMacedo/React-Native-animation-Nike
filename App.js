@@ -15,7 +15,10 @@ const transitionConfig = {
   easing: Easing.easing
 };
 
-const Navigator = FluidNavigator({ Screen3, Screen4 }, { transitionConfig });
+const Navigator = FluidNavigator(
+  { Screen3, Screen4, Screen5 },
+  { transitionConfig }
+);
 
 export default class App extends Component {
   constructor(props) {

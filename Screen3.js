@@ -35,24 +35,59 @@ class Screen3 extends React.Component {
               <Text style={styles.fontmenuhorizontalNoActive}>Vans</Text>
             </View>
 
-            <ScrollView horizontal={true} style={styles.ScrollView}>
+            <ScrollView
+              style={{ paddingLeft: 10 }}
+              showsHorizontalScrollIndicator={false}
+              horizontal={true}
+            >
               <TouchableOpacity
                 style={{ width: 175, height: 295 }}
                 activeOpacity={1}
-                onPress={() => this.props.navigation.navigate("screen1")}
+                onPress={() => this.props.navigation.navigate("Screen4")}
               >
-                <View style={styles.card}>
-                  <Text style={styles.titleCard}>01</Text>
+                <Transition shared="card">
+                  <View style={styles.card}></View>
+                </Transition>
+                <Text style={styles.titleCard}>01</Text>
+                <Transition shared="shoe">
                   <Image
                     style={styles.shoe}
                     source={require("./assets/air-jordan-1.png")}
                   />
-                  <Text style={styles.titleCard2}>Nike Air Vapor</Text>
-                  <Text style={styles.PriceCard}>R$ 350</Text>
-                  <TouchableOpacity style={styles.buttonadd}>
-                    <Text style={{ color: "#7159c1", fontSize: 20 }}>+</Text>
-                  </TouchableOpacity>
-                </View>
+                </Transition>
+                <Text style={styles.titleCard2}>Nike Air Vapor</Text>
+                <Text style={styles.PriceCard}>R$ 350</Text>
+                <TouchableOpacity style={styles.buttonadd}>
+                  <Text style={{ color: "#7159c1", fontSize: 20 }}>+</Text>
+                </TouchableOpacity>
+              </TouchableOpacity>
+              <View
+                style={{
+                  widht: 40,
+                  height: 100,
+                  position: "absolute",
+                  backgroundColor: "#7159c1"
+                }}
+              />
+              <TouchableOpacity
+                activeOpacity={1}
+                onPress={() => this.props.navigation.navigate("Screen5")}
+              >
+                <Transition shared="card2">
+                  <View style={styles.card2}></View>
+                </Transition>
+                <Text style={styles.titleCard}>01</Text>
+                <Transition shared="shoe2">
+                  <Image
+                    style={styles.shoe2}
+                    source={require("./assets/air-jordan-1.png")}
+                  />
+                </Transition>
+                <Text style={styles.titleCard2}>Nike Air Vapor</Text>
+                <Text style={styles.PriceCard}>R$ 350</Text>
+                <TouchableOpacity style={styles.buttonadd}>
+                  <Text style={{ color: "#7159c1", fontSize: 20 }}>+</Text>
+                </TouchableOpacity>
               </TouchableOpacity>
             </ScrollView>
             <View style={styles.cardMiddle}>
@@ -67,9 +102,14 @@ class Screen3 extends React.Component {
             </View>
           </ScrollView>
           <View style={styles.bottomMenu}>
-            <Ionicons name="md-menu" size={32} color="black" />
-            <Ionicons name="md-menu" size={32} color="black" />
-            <Ionicons name="md-menu" size={32} color="black" />
+            <Ionicons
+              name="
+              md-home"
+              size={32}
+              color="black"
+            />
+            <Ionicons name="md-home" size={32} color="black" />
+            <Ionicons name="md-person" size={32} color="black" />
           </View>
         </SafeAreaView>
       </>
@@ -122,21 +162,35 @@ const styles = StyleSheet.create({
   ScrollView: {
     maxHeight: 300,
     backgroundColor: "#876",
-    margin: 10
+    margin: 10,
+    flexGrow: 1
   },
   card: {
-    width: 172,
-    height: 293,
+    width: Dimensions.get("window").width * 0.05 - 30,
+    height: Dimensions.get("window").height - 380,
     backgroundColor: "#7159c1",
     borderRadius: 20,
-    marginLeft: 10,
-    textAlign: "left"
+    marginLeft: 0,
+    textAlign: "left",
+    position: "absolute",
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    justifyContent: "flex-start",
+    paddingTop: 0,
+    paddingLeft: 10
   },
   shoe: {
     width: 185,
     height: 125,
     marginTop: 10,
-    marginLeft: -12
+    marginLeft: -12,
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    zIndex: 1
   },
   paper2: {
     width: 175,
@@ -226,6 +280,31 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center"
+  },
+  card2: {
+    width: Dimensions.get("window").width * 0.05 - 30,
+    height: Dimensions.get("window").height - 380,
+    backgroundColor: "#2EB8D1",
+    borderRadius: 20,
+    textAlign: "left",
+    position: "absolute",
+    paddingLeft: 30,
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    justifyContent: "flex-start"
+  },
+  shoe2: {
+    width: 185,
+    height: 125,
+    marginTop: 10,
+    marginLeft: -12,
+    left: 0,
+    top: 0,
+    bottom: 0,
+    right: 0,
+    zIndex: 1
   }
 });
 

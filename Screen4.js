@@ -17,13 +17,13 @@ class Screen4 extends React.Component {
         style={styles.container}
         onPress={() => this.props.navigation.navigate("Screen3")}
       >
-        <Transition shared="paper2">
-          <View style={styles.paper} />
+        <Transition shared="card">
+          <View style={styles.card} />
         </Transition>
 
-        <Transition shared="shoe2">
+        <Transition shared="shoe">
           <Image
-            style={styles.shoe2}
+            style={styles.shoe}
             source={require("./assets/air-jordan-1.png")}
           />
         </Transition>
@@ -57,51 +57,21 @@ const styles = StyleSheet.create({
     fontSize: 34,
     paddingTop: 10
   },
-  paper: {
+  card: {
     backgroundColor: "#7159c1",
-    position: "absolute",
     left: Dimensions.get("window").width * 0.25,
     top: Dimensions.get("window").height * 0.0 - 150,
     width: Dimensions.get("window").height * 0.6,
     height: Dimensions.get("window").height * 0.6,
     transform: [{ rotate: "-20deg" }],
-    shadowColor: "#000",
-    shadowRadius: 5,
-    shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: 0.4,
     borderRadius: Dimensions.get("window").height * 0.6
   },
-  paper2: {
-    width: 175,
-    height: 295,
-    flexDirection: "column",
-    backgroundColor: "#2EB8D1",
-    bottom: 0,
-    right: 10,
-    left: 50,
-    alignItems: "center",
-    justifyContent: "flex-start",
-    padding: 10,
-    borderRadius: 21,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 3 },
-    shadowOpacity: 0.6,
-    shadowRadius: 3
-  },
+
   shoe: {
-    width: 350,
-    height: 240,
-    position: "absolute",
-    left: Dimensions.get("window").width * 0.05,
-    top: Dimensions.get("window").height * 0.5 - 300,
-    transform: [{ rotate: "-30deg" }]
-  },
-  shoe2: {
-    width: 350,
-    height: 240,
-    position: "absolute",
-    left: Dimensions.get("window").width * 0.05,
-    top: Dimensions.get("window").height * 0.5 - 300,
+    width: Dimensions.get("window").width * 0.9,
+    height: Dimensions.get("window").width * 0.5,
+    left: Dimensions.get("window").width * 0.05 - 30,
+    top: Dimensions.get("window").height * 0.1 - 400,
     transform: [{ rotate: "-30deg" }]
   }
 });
